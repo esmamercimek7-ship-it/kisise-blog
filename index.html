@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esma'nın Blogu</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("e.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f1f1f1;
+            scroll-behavior: smooth; /* Menüye tıklandığında yumuşak kaydırma sağlar */
+        }
+        
+        header {
+            background-color: rgba(15, 15, 25, 0.85);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #ffdf91;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffdf91;
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        article {
+            background-color: rgba(20, 20, 35, 0.8);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+        }
+
+        article h2 {
+            margin-top: 0;
+            color: #ffdf91;
+            font-size: 28px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        /* İletişim Formu Stilleri */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #ffdf91;
+            font-size: 14px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .submit-btn {
+            background: #ffdf91;
+            color: #1a1a1a;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #fff;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            color: #aaa;
+            font-size: 13px;
+            background-color: rgba(15, 15, 25, 0.85);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Kişisel Blog</h1>
+        <nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="#">Yazılar</a>
+            <a href="#">Resimler</a>
+            <a href="#iletisim-bolumu">İletişim</a>
+        </nav>
+    </header>
+
+    <!-- Ana İçerik -->
+    <main>
+        <!-- 1. Ekran / Ana Sayfa Karşılama Alanı -->
+        <article>
+            <h2>Hoş Geldiniz</h2>
+            <p>
+                Merhaba! Bu kişisel blog sitesini Bilgisayar Mühendisliği Ağ Tabanlı Programlamaya Giriş dersi projesi için hazırlıyorum. Sitede ilerleyen haftalarda yeni bölümler yer alacaktır.
+            </p>
+        </article>
+
+        <!-- 2. İletişim Formu Alanı (Menüden tıklandığında buraya kayar) -->
+        <article id="iletisim-bolumu">
+            <h2>İletişim Formu</h2>
+            <p>Benimle iletişime geçmek için aşağıdaki formu doldurabilirsiniz.</p>
+            
+            <form>
+                <div class="form-group">
+                    <label>Adınız Soyadınız:</label>
+                    <input type="text" placeholder="Adınızı girin...">
+                </div>
+
+                <div class="form-group">
+                    <label>E-Posta Adresiniz:</label>
+                    <input type="email" placeholder="E-posta adresinizi girin...">
+                </div>
+
+                <div class="form-group">
+                    <label>Mesajınız:</label>
+                    <textarea placeholder="Mesajınızı buraya yazın..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Gönder</button>
+            </form>
+        </article>
+    </main>
+
+
+
+</body>
+</html>
