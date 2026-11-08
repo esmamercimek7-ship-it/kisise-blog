@@ -1,0 +1,269 @@
+/* =========================================================
+   KİŞİSEL BLOG - style.css
+   Renkler arka plan resminden alındı: koyu bordo + altın sarısı
+   ========================================================= */
+
+/* Renkleri tek yerde tutuyoruz. İstersen buradan değiştirip tüm siteyi değiştirebilirsin */
+:root {
+    --altin: #e8c872;          /* başlıklar, linkler, çerçeveler */
+    --altin-acik: #fff0c2;     /* üzerine gelince */
+    --krem: #f3e9dc;           /* normal yazı rengi */
+    --soluk: #bfae9a;          /* küçük yazılar */
+    --bordo-koyu: rgba(28, 6, 8, 0.78);  /* kutu arka planı (yarı saydam) */
+    --bordo-ust: rgba(20, 4, 6, 0.85);   /* header ve footer */
+}
+
+/* Tüm elemanlarda padding/border genişliğe dahil olsun, taşma olmasın */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* menüye tıklayınca yumuşak kayma */
+}
+
+body {
+    margin: 0;               /* sayfa kenarındaki varsayılan boşluğu sıfırlar */
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--krem);
+
+    /* Arka plan resmi */
+    background-color: #2a0608;           /* resim yüklenmezse görünecek renk */
+    background-image: url("arkaplan.jpg");
+    background-size: cover;              /* ekranı tamamen kapla */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;        /* kaydırınca resim sabit kalır */
+
+    /* Footer'ı sayfanın en altına itmek için */
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------------- ÜST MENÜ ---------------- */
+header {
+    background-color: var(--bordo-ust);
+    backdrop-filter: blur(6px);          /* arkadaki resmi hafif bulanıklaştırır */
+    border-bottom: 1px solid rgba(232, 200, 114, 0.35);
+    padding: 18px 40px;
+    display: flex;                       /* logo ve menü yan yana */
+    justify-content: space-between;      /* biri sola, biri sağa */
+    align-items: center;                 /* dikeyde ortala */
+    flex-wrap: wrap;                     /* dar ekranda alt satıra geçsin */
+    gap: 10px;
+    position: sticky;                    /* kaydırınca üstte kalır */
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: var(--altin);
+}
+
+nav a {
+    color: var(--altin);
+    text-decoration: none;               /* link altı çizgisini kaldırır */
+    margin-left: 8px;
+    padding: 8px 16px;
+    font-size: 15px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--altin-acik);
+    border-color: var(--altin);
+}
+
+/* Açık olan sayfanın menü butonu dolu görünür */
+body:not(:has(:target)) nav a[href="#anasayfa"],
+body:has(#anasayfa:target) nav a[href="#anasayfa"],
+body:has(#yazilar:target) nav a[href="#yazilar"],
+body:has(#resimler:target) nav a[href="#resimler"],
+body:has(#iletisim:target) nav a[href="#iletisim"] {
+    background: var(--altin);
+    color: #2a0608;
+    font-weight: bold;
+}
+
+/* ---------------- ANA İÇERİK ---------------- */
+main {
+    flex: 1;                             /* boş yeri doldurur, footer aşağı iner */
+    width: 100%;
+    max-width: 820px;
+    margin: 40px auto;                   /* üst-alt 40px, sağ-sol otomatik (ortalar) */
+    padding: 0 20px;
+}
+
+/* ---------------- SAYFA KUTULARI ---------------- */
+.content-box {
+    display: none;                       /* varsayılan: gizli (eski ".gizli" yerine) */
+    background-color: var(--bordo-koyu);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(232, 200, 114, 0.4);
+    border-radius: 16px;
+    padding: 36px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    scroll-margin-top: 100px;            /* sticky header kutunun üstünü kapatmasın */
+    animation: belir 0.5s ease;
+}
+
+/* Hangi kutu görünecek?
+   1) Adres çubuğunda hiçbir # yoksa -> Ana Sayfa
+   2) Adres #yazilar gibiyse -> o kutu
+   3) Kutunun içindeki bir şey hedefse (başarı mesajı) -> o kutu */
+main:not(:has(:target)) #anasayfa,
+.content-box:target,
+.content-box:has(:target) {
+    display: block;
+}
+
+@keyframes belir {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    margin-top: 0;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 30px;
+    color: var(--altin);
+}
+
+/* Başlığın altına ince altın çizgi */
+h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    margin-top: 10px;
+    background: var(--altin);
+}
+
+time {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--soluk);
+    margin-bottom: 18px;
+}
+
+p {
+    line-height: 1.7;
+    color: var(--krem);
+}
+
+/* ---------------- YAZI EKLEME FORMU ---------------- */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--altin);
+    font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(232, 200, 114, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-size: 15px;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(243, 233, 220, 0.45);
+}
+
+/* Kutuya tıklayınca altın çerçeve parlar */
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--altin);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(232, 200, 114, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 140px;
+}
+
+.submit-btn {
+    background: var(--altin);
+    color: #2a0608;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background: var(--altin-acik);
+    transform: translateY(-2px);
+}
+
+/* Başarı mesajı: sadece adres #basari olunca görünür */
+.success-message {
+    display: none;
+    background: rgba(46, 204, 113, 0.18);
+    border: 1px solid #2ecc71;
+    color: #7ff0ae;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+    scroll-margin-top: 120px;
+}
+
+.success-message:target {
+    display: block;
+}
+
+/* ---------------- ALT BİLGİ ---------------- */
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background-color: var(--bordo-ust);
+    border-top: 1px solid rgba(232, 200, 114, 0.35);
+}
+
+footer p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--soluk);
+}
+
+/* ---------------- TELEFON UYUMU ---------------- */
+@media (max-width: 600px) {
+    header {
+        padding: 14px 16px;
+        justify-content: center;
+    }
+    nav a {
+        margin: 2px;
+        padding: 6px 12px;
+    }
+    .content-box {
+        padding: 22px;
+    }
+}
