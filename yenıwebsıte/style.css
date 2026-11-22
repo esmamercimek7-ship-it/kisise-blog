@@ -267,3 +267,13 @@ footer p {
         padding: 22px;
     }
 }
+
+.sol-kose-foto {
+    position: fixed; /*katman olarak ustte olsun dıye*/
+    top: 1px; /*üstten bosluk*/
+    left: 200px; /*soldan bosluk*/
+    width: 70px; /*genişlik*/
+    height: auto;   /*oranı korumak içn*/
+    z-index: 1000;  /*diğer ögelerden üstte gozuksun dıye*/
+    clip-path: circle(39.5% at 47.5% 50%); /* Beyaz kenarları gizler */
+}

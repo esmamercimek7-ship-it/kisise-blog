@@ -8,7 +8,9 @@
 </head>
 <body>
 
-    <!-- Üst Menü: href="#..." sayesinde JavaScript'e gerek kalmadan sayfa değişir -->
+    <!-- Sol köşe fotoğrafı için buraya ekleyebilirsin -->
+    <img src="mini.png" alt="Profil" class="sol-kose-foto">
+
     <header>
         <h1>Kişisel Blog</h1>
         <nav>
@@ -25,7 +27,6 @@
         <!-- 1. ANA SAYFA -->
         <div id="anasayfa" class="content-box">
             <h2>Merhabalarrrr</h2>
-        
         </div>
 
         <!-- 2. YAZILAR (YAZI EKLEME FORMU) -->
@@ -33,7 +34,7 @@
             <h2>Yeni Yazı Paneli</h2>
             <time>İçerik Giriş Ekranı</time>
 
-            <div id="basari" class="success-message">Yazınız başarıyla kaydedildi! (Listeleme özelliği haftaya eklenecektir.)</div>
+            <div id="basari" class="success-message">Yazınız başarıyla kaydedildi!</div>
 
             <form action="#basari" method="get">
                 <div class="form-group">
@@ -42,3 +43,15 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="icerikInput">Yazı İçeriği:</label>
+                    <textarea id="icerikInput" name="icerik" rows="5" placeholder="Yazınızı buraya yazın..." required></textarea>
+                </div>
+
+                <button type="submit">Yayınla</button>
+            </form>
+        </div>
+
+    </main>
+
+</body>
+</html>
